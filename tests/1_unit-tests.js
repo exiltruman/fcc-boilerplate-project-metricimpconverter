@@ -4,7 +4,7 @@ const ConvertHandler = require('../controllers/convertHandler.js');
 
 let convertHandler = new ConvertHandler();
 
-suite('convertHandler', function(){
+suite('Unit Tests', function(){
     test('should correctly read a whole number input.', () => {
         let input = '1kg';
         assert(convertHandler.getNum(input) === 1);
@@ -94,21 +94,21 @@ suite('convertHandler', function(){
         assert(convertHandler.spellOutUnit(input6) === 'kilometers');
     })
     test('should correctly convert gal to L.', () => {
-        assert(convertHandler.convert(1, 'gal') === 3.78541);
+        assert(convertHandler.convert(1, 'gal') === Math.round(3.78541 * 100000) / 100000);
     })
     test('should correctly convert L to gal.', () => {
-        assert(convertHandler.convert(1, 'L') === 1/3.78541);
+        assert(convertHandler.convert(1, 'L') === Math.round(1/3.78541 * 100000) / 100000);
     })
     test('should correctly convert mi to km.', ()=> {
-        assert(convertHandler.convert(1, 'mi') === 1.60934);
+        assert(convertHandler.convert(1, 'mi') === Math.round(1.60934 * 100000) / 100000);
     })
     test('should correctly convert km to mi.', ()=> {
-        assert(convertHandler.convert(1, 'km') === 1/1.60934);
+        assert(convertHandler.convert(1, 'km') === Math.round(1/1.60934 * 100000) / 100000);
     })
     test('should correctly convert lbs to kg.', ()=> {
-        assert(convertHandler.convert(1, 'lbs') === 0.453592);
+        assert(convertHandler.convert(1, 'lbs') === Math.round(0.453592 * 100000) / 100000);
     })
     test('should correctly convert kg to lbs.', ()=> {
-        assert(convertHandler.convert(1, 'kg') === 1/0.453592);
+        assert(convertHandler.convert(1, 'kg') === Math.round(1/0.453592 * 100000) / 100000);
     })
 });
